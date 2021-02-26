@@ -64,9 +64,11 @@ fun MyApp() {
             content = {
                 NavHost(navController, startDestination = Screen.HomeScreen.route) {
                     composable(Screen.HomeScreen.route) {
-                        HomeScreen(onItemClicked = { item ->
-                            navController.navigate(Screen.DetailScreen.route.plus("/${item.id}"))
-                        })
+                        HomeScreen(
+                            onItemClicked = { item ->
+                                navController.navigate(Screen.DetailScreen.route.plus("/${item.id}"))
+                            }
+                        )
                     }
 
                     composable(Screen.DetailScreen.route.plus("/{$PET_ID_KEY}"), arguments = listOf(petIdNavArgument)) { backStackEntry ->
@@ -98,7 +100,6 @@ fun AppToolbar(showBackButton: Boolean, onBackClicked: () -> Unit) {
         navigationIcon = navContent
     )
 }
-
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
